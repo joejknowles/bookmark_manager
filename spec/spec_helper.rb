@@ -1,7 +1,5 @@
 ENV['RACK_ENV'] = 'test'
 require 'server'
-require 'user'
-require 'database_cleaner'
 require 'capybara/rspec'
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -10,19 +8,6 @@ RSpec.configure do |config|
 
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
-  end
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
   end
 
   Capybara.app = BookmarkManager
