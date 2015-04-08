@@ -4,7 +4,7 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 require 'data_mapper'
-require './lib/data_mapper_setup'
+require './app/data_mapper_setup'
 
 task :auto_upgrade do
   DataMapper.auto_upgrade!
